@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Telco Customer Churn Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📊 Telco Customer Churn Prediction</h1>
+
+<form method="POST">
+
+<label>Gender</label>
+<select name="gender">
+    <option>Male</option>
+    <option>Female</option>
+</select>
+
+<label>Partner</label>
+<select name="partner">
+    <option>Yes</option>
+    <option>No</option>
+</select>
+
+<label>Dependents</label>
+<select name="dependents">
+    <option>Yes</option>
+    <option>No</option>
+</select>
+
+<label>Phone Service</label>
+<select name="phoneservice">
+    <option>Yes</option>
+    <option>No</option>
+</select>
+
+<label>Paperless Billing</label>
+<select name="paperless">
+    <option>Yes</option>
+    <option>No</option>
+</select>
+
+<label>Tenure (Months)</label>
+<input type="number" name="tenure" required>
+
+<label>Monthly Charges</label>
+<input type="number" step="0.01"
+       name="monthly_charges" required>
+
+<label>Total Charges</label>
+<input type="number" step="0.01"
+       name="total_charges" required>
+
+<label>Contract</label>
+<select name="contract">
+    <option>Month-to-month</option>
+    <option>One year</option>
+    <option>Two year</option>
+</select>
+
+<label>Internet Service</label>
+<select name="internet">
+    <option>DSL</option>
+    <option>Fiber optic</option>
+    <option>No</option>
+</select>
+
+<label>Payment Method</label>
+<select name="payment">
+    <option>Electronic check</option>
+    <option>Mailed check</option>
+    <option>Bank transfer (automatic)</option>
+    <option>Credit card (automatic)</option>
+</select>
+
+<br><br>
+
+<input type="submit" value="Predict">
+
+</form>
+
+{% if prediction %}
+
+<hr>
+
+<h2>{{ prediction }}</h2>
+
+<h3>Churn Probability :
+{{ "%.2f"|format(probability) }}</h3>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
